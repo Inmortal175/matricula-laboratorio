@@ -122,7 +122,6 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
         if (modal) {
           modal.classList.add('hidden'); // Muestra el modal
         }
-        this.CursoData.pop()
     }
 
     deleteCourse() {
