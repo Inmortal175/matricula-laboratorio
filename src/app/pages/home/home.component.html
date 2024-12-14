@@ -1,0 +1,106 @@
+
+<style>
+  body {
+    background-color: #1a1a1a;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .sidebar {
+    background-color: #262626;
+    color: #ffffff;
+  }
+
+  .content {
+    background-color: #3a3a3a;
+  }
+
+  .table-header {
+    background-color: #2d2d2d;
+  }
+
+  .table-row {
+    background-color: #4e4d4d;
+  }
+
+  .table-row:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+
+  .highlight {
+    background-color: #f8b700;
+    color: black;
+  }
+</style>
+<!-- Main container -->
+<div class="flex flex-col md:flex-row h-screen text-gray-300">
+
+  <!-- Sidebar -->
+  <aside #sidebar class="sidebar w-full md:w-1/4 p-6 fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50 md:relative">
+    <header class="flex items-center justify-between bg-gray-900 p-4 md:hidden">
+      <button #menubtn id="menu-btn" class="text-yellow-500 text-2xl" (click)="closeSidebar()">
+        &#9776; <!-- Menu Icon -->
+      </button>
+      <h1 class="text-yellow-500 font-bold">Sistema de Matrícula</h1>
+    </header>
+    <div class="flex flex-col items-center">
+      <img src="favicon.png" height="100" width="100" alt="EPIS Logo" class="mb-4">
+      <h1 class="text-lg font-bold">EPIS UNSCH</h1>
+      <nav class="mt-8 w-full">
+        <ul>
+          <li class="mb-4 bg-yellow-500 rounded cursor-pointer">
+            <a class="px-4 py-4 flex items-center space-x-2 text-white font-bold text-lg">
+              <span><i class="fa-solid fa-person-chalkboard"></i></span>
+              <span>Matrícula</span>
+            </a>
+          </li>
+          @if(correo === "franklin.figueroa.27@unsch.edu.pe"){
+            <li class="mb-4 rounded cursor-pointer hover:bg-yellow-500 ">
+              <a class="px-4 py-4 flex items-center space-x-2 text-yellow-500 hover:text-white font-bold text-lg">
+                <span><i class="fa-solid fa-list"></i></span>
+                <span>Lista de Matrícula</span>
+              </a>
+            </li>
+          }
+          <li class="mb-4 rounded cursor-pointer hover:bg-yellow-500">
+            <a (click)="LogOut()" class="px-4 py-4 flex items-center space-x-2 text-yellow-500 hover:text-white font-bold text-lg">
+              <span><i class="fa-solid fa-right-from-bracket"></i></span>
+              <span>Cerrar Sesión</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="content flex-1 p-6 flex-col h-screen">
+    <header class="flex items-center justify-between bg-gray-900 p-4 md:hidden">
+      <button #menubtn id="menu-btn" class="text-yellow-500 text-2xl" (click)="openSidebar()">
+        &#9776; <!-- Menu Icon -->
+      </button>
+      <h1 class="text-yellow-500 font-bold">Sistema de Matrícula</h1>
+    </header>
+
+    <div class="content p-6 flex-grow pb-20">
+      <header class="hidden md:flex flex-wrap items-center justify-between">
+        <h2 class="text-yellow-500 font-bold text-lg">Sistema de Matrícula EPIS-UNSCH</h2>
+        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+          <span><canvas #canvasElement width="40" height="40" style="border-radius: 50%; border: solid white 2px"></canvas></span>
+          <span class="font-semibold">{{DisplayName}}</span>
+          <span> | Alumno</span>
+        </div>
+      </header>
+
+      <main class="mt-8 flex-grow">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center p-4 fixed bottom-0 left-0 right-0">
+      © 2024 Franklin Figueroa Perez.
+    </footer>
+
+  </div> <!-- End of Main Content -->
+
+</div> <!-- End of Main Container -->

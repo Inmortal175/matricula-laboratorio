@@ -1,0 +1,30 @@
+body {
+    background-color: #1a1a1a;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .sidebar {
+    background-color: #262626;
+    color: #ffffff;
+  }
+
+  .content {
+    background-color: #3a3a3a;
+  }
+
+  .table-header {
+    background-color: #2d2d2d;
+  }
+
+  .table-row {
+    background-color: #424242;
+  }
+
+  .table-row:nth-child(even) {
+    background-color: #3b3b3b;
+  }
+
+  .highlight {
+    background-color: #f8b700;
+    color: black;
+  }
