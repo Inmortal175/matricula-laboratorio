@@ -122,6 +122,7 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
         if (modal) {
           modal.classList.add('hidden'); // Muestra el modal
         }
+        this.CursoData.pop()
     }
 
     deleteCourse() {
@@ -238,7 +239,6 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
         //   console.log(url)
         });
         
-        this.CursoData.pop()
     }
 
     generarPdf() {
