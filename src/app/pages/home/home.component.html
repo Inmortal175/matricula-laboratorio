@@ -1,4 +1,4 @@
-
+<app-countdown-timer [username]="DisplayName" (countdownFinished)="onCountdownComplete()" [logoutMethod]="performLogout"></app-countdown-timer>
 <style>
   body {
     background-color: #1a1a1a;
@@ -32,7 +32,7 @@
   }
 </style>
 <!-- Main container -->
-<div class="flex flex-col md:flex-row h-screen text-gray-300">
+<div [ngClass]="{'hidden' : !isCountdownComplete}"  class="flex flex-col md:flex-row h-screen text-gray-300">
 
   <!-- Sidebar -->
   <aside #sidebar class="sidebar w-full md:w-1/4 p-6 fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50 md:relative">
@@ -55,7 +55,7 @@
           </li>
           @if(correo === "franklin.figueroa.27@unsch.edu.pe"){
             <li class="mb-4 rounded cursor-pointer hover:bg-yellow-500 ">
-              <a class="px-4 py-4 flex items-center space-x-2 text-yellow-500 hover:text-white font-bold text-lg">
+              <a [routerLink]="['matriculados']" class="px-4 py-4 flex items-center space-x-2 text-yellow-500 hover:text-white font-bold text-lg">
                 <span><i class="fa-solid fa-list"></i></span>
                 <span>Lista de Matrícula</span>
               </a>
@@ -73,7 +73,7 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="content flex-1 p-6 flex-col h-screen">
+  <div class="content flex-1 p-6 flex-col h-screen pb-20">
     <header class="flex items-center justify-between bg-gray-900 p-4 md:hidden">
       <button #menubtn id="menu-btn" class="text-yellow-500 text-2xl" (click)="openSidebar()">
         &#9776; <!-- Menu Icon -->
@@ -97,7 +97,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-center p-4 fixed bottom-0 left-0 right-0">
+    <footer class="bg-gray-900 text-white text-center p-4 fixed bottom-0 left-0 right-0 z-[99]">
       © 2024 Franklin Figueroa Perez.
     </footer>
 

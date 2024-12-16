@@ -131,7 +131,7 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
     }
     
     generarMatricula(){
-        if(this.CursoData.length > 0){
+        if(this.CursoData.length > 0 && this.IsOpenMatricula){
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                   confirmButton: "bg-green-600 p-2 mx-2 rounded font-bold text-lg text-white",
@@ -184,7 +184,10 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
                             //agregamos la matricula
                             const matriculaData : Matricula = {
                                 correo : this.USER?.email,
-                                docente: curso.docente
+                                docente: curso.docente,
+                                codigo: this.StudentCode,
+                                alumno: this.USER?.displayName,
+                                foto: this.USER?.photoURL
                             }
                             this.matriculaService.addMatricula(matriculaData).then((data) =>{
                                 //abre despues de matricular
@@ -213,6 +216,15 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
                 }
               });
         }else{
+          if(!this.IsOpenMatricula){
+            Swal.fire({
+              title: 'Ya estas Matriculado',
+              icon:'error',
+              text: 'Pillin, estas intentando forzar otra matricula.',
+              timer: 2000,
+              showConfirmButton: false
+          })
+          }else{
             Swal.fire({
                 title: 'sin Cursos',
                 icon:'warning',
@@ -221,6 +233,8 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
                 timer: 2000,
                 showConfirmButton: false
             })
+          }
+            
         }
     }
 
@@ -708,16 +722,6 @@ export class MatriculaComponent  implements OnInit, AfterViewInit{
         return pdf
     }
 
-    abrirPdf(){
-        // const ESQUELAVIEW = this.EsquelaView.nativeElement;
-        // const pdf = this.generarPdf()
-        // pdf.getBlob((blob) => {
-        //   let url = URL.createObjectURL(blob);
-        //   this.render.appendChild(ESQUELAVIEW, this.pdfElement);
-        //   this.render.setAttribute(this.pdfElement, 'src', url);
-        // });
-      }
-    
       descargarPdf(){
         const USER = this.authService.auth.currentUser?.displayName;
         const pdf = this.generarPdf()

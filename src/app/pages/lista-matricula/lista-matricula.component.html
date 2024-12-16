@@ -1,0 +1,66 @@
+
+ <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+        <h2 class="text-xl font-semibold mb-4 text-white">Curso: Estadística y Probabilidades (Mie 7:00 am - 11:00 am)</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-800 border border-gray-600 rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-gray-700 text-gray-300 uppercase text-sm leading-normal">
+                        <th class="py-3 px-3 text-left">IMG</th>
+                        <th class="py-3 px-3 text-left">Nombre</th>
+                        <th class="py-3 px-3 text-left">Código</th>
+                        <th class="py-3 px-3 text-left">Correo</th>
+                        <th class="py-3 px-3 text-left">Semestre</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-300 text-sm font-light">
+                    @for (matricula of matriculasDocente1; track matricula.id) {
+                        <tr class="border-b border-gray-600 hover:bg-gray-700">
+                            <td class="py-3 px-3">
+                                <img [src]="matricula.foto || 'https://via.placeholder.com/30'" height="30" width="30" class="rounded-full" alt="profile">
+                            </td>
+                            <td class="py-3 px-3">{{ matricula.alumno }}</td>
+                            <td class="py-3 px-3">{{ matricula.codigo }}</td>
+                            <td class="py-3 px-3">{{ matricula.correo }}</td>
+                            <td class="py-3 px-3">2025-0</td> <!-- Cambia esto si tienes el semestre en tus datos -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div> 
+    </div>
+
+    <div>
+        <h2 class="text-xl font-semibold mb-4 text-white">Curso: Estadística y Probabilidades (Vie 2:00 pm - 6:00 pm)</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-800 border border-gray-600 rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-gray-700 text-gray-300 uppercase text-sm leading-normal">
+                        <th class="py-3 px-3 text-left">IMG</th>
+                        <th class="py-3 px-3 text-left">Nombre</th>
+                        <th class="py-3 px-3 text-left">Código</th>
+                        <th class="py-3 px-3 text-left">Correo</th>
+                        <th class="py-3 px-3 text-left">Semestre</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-300 text-sm font-light">
+                    @for (matricula of matriculasDocente2; track matricula.id) {
+                        <tr class="border-b border-gray-600 hover:bg-gray-700">
+                            <td class="py-3 px-3">
+                                <img [src]="matricula.foto || 'https://via.placeholder.com/30'" height="30" width="30" class="rounded-full" alt="profile">
+                            </td>
+                            <td class="py-3 px-3">{{ matricula.alumno }}</td>
+                            <td class="py-3 px-3">{{ matricula.codigo }}</td>
+                            <td class="py-3 px-3">{{ matricula.correo }}</td>
+                            <td class="py-3 px-3">2025-0</td> <!-- Cambia esto si tienes el semestre en tus datos -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div> 
+    </div>
+    <div>
+        <button (click)="exportToExcel()" class="bg-yellow-500 text-white px-4 py-2 rounded mb-4">Exportar a Excel</button>
+
+    </div>
+</div>
