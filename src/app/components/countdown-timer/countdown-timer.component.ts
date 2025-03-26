@@ -48,7 +48,7 @@ export class CountdownTimerComponent {
 
     private getExpirationDate(): Date {
         const currentYear = new Date().getFullYear();
-        let expirationDate = new Date(`Dec 17, ${currentYear} 08:00:00`);
+        let expirationDate = new Date(`Mar 26, ${currentYear} 08:30:00`); // 
         
         // If the current date is past the expiration date, set it to the next year
         if (new Date() > expirationDate) {
